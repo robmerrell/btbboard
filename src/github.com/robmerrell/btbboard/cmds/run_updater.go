@@ -1,7 +1,7 @@
 package cmds
 
 import (
-	"github.com/robmerrell/vtcboard/updaters"
+	"github.com/robmerrell/btbboard/updaters"
 )
 
 var UpdateCoinPricesDoc = `

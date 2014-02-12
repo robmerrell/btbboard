@@ -2,7 +2,7 @@ package updaters
 
 import (
 	"github.com/SlyMarbo/rss"
-	"github.com/robmerrell/vtcboard/models"
+	"github.com/robmerrell/btbboard/models"
 )
 
 type Reddit struct{}

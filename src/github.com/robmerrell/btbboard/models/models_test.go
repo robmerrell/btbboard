@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/robmerrell/vtcboard/config"
+	"github.com/robmerrell/btbboard/config"
 	"labix.org/v2/mgo/bson"
 	. "launchpad.net/gocheck"
 	"testing"

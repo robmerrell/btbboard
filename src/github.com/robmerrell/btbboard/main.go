@@ -2,11 +2,11 @@ package main
 
 import (
 	"fmt"
+	"github.com/robmerrell/btbboard/cmds"
+	"github.com/robmerrell/btbboard/config"
+	"github.com/robmerrell/btbboard/models"
+	"github.com/robmerrell/btbboard/updaters"
 	"github.com/robmerrell/comandante"
-	"github.com/robmerrell/vtcboard/cmds"
-	"github.com/robmerrell/vtcboard/config"
-	"github.com/robmerrell/vtcboard/models"
-	"github.com/robmerrell/vtcboard/updaters"
 	"os"
 )
 

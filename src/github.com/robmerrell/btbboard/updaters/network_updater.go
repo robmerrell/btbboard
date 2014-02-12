@@ -2,7 +2,7 @@ package updaters
 
 import (
 	"fmt"
-	"github.com/robmerrell/vtcboard/models"
+	"github.com/robmerrell/btbboard/models"
 	"io/ioutil"
 	"net/http"
 	"strconv"

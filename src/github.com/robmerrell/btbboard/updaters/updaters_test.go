@@ -2,8 +2,8 @@ package updaters
 
 import (
 	"fmt"
-	"github.com/robmerrell/vtcboard/config"
-	"github.com/robmerrell/vtcboard/models"
+	"github.com/robmerrell/btbboard/config"
+	"github.com/robmerrell/btbboard/models"
 	"labix.org/v2/mgo/bson"
 	. "launchpad.net/gocheck"
 	"net/http"
