@@ -2,4 +2,4 @@ env = "dev"
 
 [database]
 host = "localhost"
-db = "vtcboard"
+db = "btbboard"

@@ -13,7 +13,7 @@ import (
 func main() {
 	// get the environment for the config
 	appEnv := ""
-	env := os.Getenv("VTCBOARD_ENV")
+	env := os.Getenv("BTBBOARD_ENV")
 	switch env {
 	case "dev", "test", "prod":
 		appEnv = env
@@ -30,7 +30,7 @@ func main() {
 	}
 	defer models.CloseDB()
 
-	bin := comandante.New("vtcboard", "Vertcoin dashboard")
+	bin := comandante.New("btbboard", "BitBar dashboard")
 	bin.IncludeHelp()
 
 	// add indexes to the database
