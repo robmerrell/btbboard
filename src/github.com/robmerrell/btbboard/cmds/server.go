@@ -165,8 +165,8 @@ func ServeAction() error {
 		return "ok"
 	})
 
-	log.Printf("listening on port 4000")
-	http.ListenAndServe(":4000", m)
+	log.Printf("listening on port 5000")
+	http.ListenAndServe(":5000", m)
 
 	return nil
 }
