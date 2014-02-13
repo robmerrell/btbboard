@@ -7,35 +7,17 @@ import (
 
 type Reddit struct{}
 
-// Update retrieves any new stores on the vertcoin subreddit.
+// Update retrieves any new stores on the bitbar subreddit.
 func (r *Reddit) Update() error {
 	conn := models.CloneConnection()
 	defer conn.Close()
 
-	vertcoinPosts, err := getNewRedditPosts("http://www.reddit.com/r/vertcoin/.rss", "/r/vertcoin")
+	bitbarPosts, err := getNewRedditPosts("http://www.reddit.com/r/bitbar/.rss", "/r/bitbar")
 	if err != nil {
 		return err
 	}
 
-	if err := savePosts(vertcoinPosts, conn); err != nil {
-		return err
-	}
-
-	vertcoinMiningPosts, err := getNewRedditPosts("http://www.reddit.com/r/vertcoinmining/.rss", "/r/vertcoinmining")
-	if err != nil {
-		return err
-	}
-
-	if err := savePosts(vertcoinMiningPosts, conn); err != nil {
-		return err
-	}
-
-	vertmarketPosts, err := getNewRedditPosts("http://www.reddit.com/r/vertmarket/.rss", "/r/vertmarket")
-	if err != nil {
-		return err
-	}
-
-	return savePosts(vertmarketPosts, conn)
+	return savePosts(bitbarPosts, conn)
 }
 
 func savePosts(posts []*models.Post, conn *models.MgoConnection) error {

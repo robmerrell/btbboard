@@ -12,11 +12,9 @@ import (
 
 type Network struct{}
 
-var networkBaseUrl = "http://explorer.vertcoin.org/chain/Vertcoin/q"
+var networkBaseUrl = "http://btb.cryptocoinexplorer.com/chain/BitBar/q"
 
-// var networkBaseUrl = "http://cryptexplorer.com/chain/VertCoin/q"
-
-// Update retrieves VTC netork information from a blockchain api.
+// Update retrieves BTB netork information from a blockchain api.
 func (n *Network) Update() error {
 	hashRate, err := getHashRate()
 	if err != nil {
@@ -67,7 +65,7 @@ func networkQuery(url string) (string, error) {
 
 // getHashRate gets the current hash rate and converts into a human readable number.
 func getHashRate() (string, error) {
-	hash, err := networkQuery("/nethash/120/-121/-1")
+	hash, err := networkQuery("/nethash/144/-145/-1")
 	if err != nil {
 		return "", err
 	}
