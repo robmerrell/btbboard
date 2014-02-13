@@ -1,5 +1,5 @@
 .DS_Store
 pkg/*
 *.swp
-src/github.com/robmerrell/vtcboard/vtcboard
-src/github.com/robmerrell/vtcboard/vtcboard-linux-*
+src/github.com/robmerrell/btbboard/btbboard
+src/github.com/robmerrell/btbboard/btbboard-linux-*
