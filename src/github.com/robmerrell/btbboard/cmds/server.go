@@ -72,21 +72,7 @@ func ServeAction() error {
 		}
 
 		// /r/vertcoin posts
-		redditVertcoin, err := models.GetLatestPosts(conn, "/r/vertcoin", 8)
-		if err != nil {
-			webError(err, res)
-			return ""
-		}
-
-		// /r/vertmarket posts
-		redditVertmarket, err := models.GetLatestPosts(conn, "/r/vertmarket", 8)
-		if err != nil {
-			webError(err, res)
-			return ""
-		}
-
-		// /r/vertmining posts
-		redditVertcoinMining, err := models.GetLatestPosts(conn, "/r/vertcoinmining", 8)
+		redditBitBar, err := models.GetLatestPosts(conn, "/r/bitbar", 8)
 		if err != nil {
 			webError(err, res)
 			return ""
@@ -101,14 +87,12 @@ func ServeAction() error {
 
 		// generate the HTML
 		valueMap := map[string]interface{}{
-			"redditVertcoin":       redditVertcoin,
-			"redditVertmarket":     redditVertmarket,
-			"redditVertcoinMining": redditVertcoinMining,
-			"forum":                forum,
-			"averages":             graphAverages,
-			"graphValueType":       graphValueType,
-			"showBtcLink":          !useBtc,
-			"showUsdLink":          useBtc,
+			"redditBitBar":   redditBitBar,
+			"forum":          forum,
+			"averages":       graphAverages,
+			"graphValueType": graphValueType,
+			"showBtcLink":    !useBtc,
+			"showUsdLink":    useBtc,
 		}
 
 		return mainView.Render(generateTplVars(price, network), valueMap)
@@ -165,8 +149,8 @@ func ServeAction() error {
 		return "ok"
 	})
 
-	log.Printf("listening on port 5000")
-	http.ListenAndServe(":5000", m)
+	log.Printf("listening on port 4001")
+	http.ListenAndServe(":4001", m)
 
 	return nil
 }
@@ -189,7 +173,7 @@ func generateTplVars(price *models.Price, network *models.Network) map[string]st
 	marketCap := float64(minedNum) * price.Cryptsy.Usd
 
 	// coins left to be mined
-	remainingCoins := 84000000 - minedNum
+	remainingCoins := 500000 - minedNum
 
 	vars := map[string]string{
 		"usd":         lib.RenderFloat("", price.Cryptsy.Usd),

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>VTCBoard</title>
+    <title>BTBBoard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -10,7 +10,7 @@
   <body>
     <header class="pure-g-r">
       <div class="pure-u-2-5 logo">
-        Vertcoin dashboard
+        BitBar dashboard
       </div>
 
       <div class="pure-u-3-5 donate">
@@ -85,34 +85,12 @@
         <div class="pure-g-r">
           <div class="pure-u-1-2">
             <div class="news-title">
-              /r/vertcoin
+              /r/bitbar
             </div>
             <ul class="news-body">
-              {{#redditVertcoin}}
+              {{#redditBitBar}}
                 <li><a href="{{Url}}">{{Title}}</a></li>
-              {{/redditVertcoin}}
-            </ul>
-          </div>
-
-          <div class="pure-u-1-2">
-            <div class="news-title">
-              /r/vertmarket
-            </div>
-            <ul class="news-body">
-              {{#redditVertmarket}}
-                <li><a href="{{Url}}">{{Title}}</a></li>
-              {{/redditVertmarket}}
-            </ul>
-          </div>
-
-          <div class="pure-u-1-2">
-            <div class="news-title">
-              /r/vertcoinmining
-            </div>
-            <ul class="news-body">
-              {{#redditVertcoinMining}}
-                <li><a href="{{Url}}">{{Title}}</a></li>
-              {{/redditVertcoinMining}}
+              {{/redditBitBar}}
             </ul>
           </div>
         </div>
@@ -128,7 +106,7 @@
               </div>
 
               <div class="stat-value">
-                {{hashRate}}
+                {{hashRate}} Mh/s
               </div>
             </div>
           </div>
