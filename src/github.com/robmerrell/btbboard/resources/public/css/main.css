@@ -43,7 +43,6 @@ header {
   background-color: #333;
   border-bottom: 1px solid #a1a1a1;
   color: white;
-  height: 50px;
   padding: 0 20px 0 20px;
 }
 
@@ -60,7 +59,7 @@ header {
 
 .donate {
   font-size: 0.8em;
-  line-height: 50px;
+  margin-top: 18px;
   text-align: right;
 }
 
