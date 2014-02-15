@@ -43,16 +43,24 @@ header {
   background-color: #333;
   border-bottom: 1px solid #a1a1a1;
   color: white;
-  padding: 10px 20px 10px 20px;
+  height: 50px;
+  padding: 0 20px 0 20px;
 }
 
-.logo {
+.logo span {
+  float: left;
   font-size: 1.5em;
+  line-height: 50px;
+  margin-left: 3px;
+}
+
+.logo img {
+  float: left;
 }
 
 .donate {
   font-size: 0.8em;
-  margin-top: 5px;
+  line-height: 50px;
   text-align: right;
 }
 
