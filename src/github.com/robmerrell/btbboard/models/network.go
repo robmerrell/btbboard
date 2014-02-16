@@ -6,11 +6,12 @@ import (
 )
 
 type Network struct {
-	HashRate    string    "hashRate"
-	Difficulty  string    "difficulty"
-	Mined       string    "mined"
-	BlockCount  string    "blockCount"
-	GeneratedAt time.Time "generatedAt"
+	HashRate          string    "hashRate"
+	Difficulty        string    "difficulty"
+	Mined             string    "mined"
+	BlockCount        string    "blockCount"
+	LatestBlockReward float64   "LatestBlockReward"
+	GeneratedAt       time.Time "generatedAt"
 }
 
 var networkCollection = "network"

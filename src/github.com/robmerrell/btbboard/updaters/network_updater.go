@@ -1,6 +1,7 @@
 package updaters
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/robmerrell/btbboard/models"
 	"io/ioutil"
@@ -13,6 +14,7 @@ import (
 type Network struct{}
 
 var networkBaseUrl = "http://btb.cryptocoinexplorer.com/chain/BitBar/q"
+var bitBarInfoUrl = "http://bitbar.info/stats/bitbar_json.txt"
 
 // Update retrieves BTB netork information from a blockchain api.
 func (n *Network) Update() error {
@@ -36,15 +38,21 @@ func (n *Network) Update() error {
 		return err
 	}
 
+	blockReward, err := getBlockReward()
+	if err != nil {
+		return err
+	}
+
 	conn := models.CloneConnection()
 	defer conn.Close()
 
 	network := &models.Network{
-		HashRate:    hashRate,
-		Difficulty:  diff,
-		Mined:       mined,
-		BlockCount:  blockCount,
-		GeneratedAt: time.Now().UTC(),
+		HashRate:          hashRate,
+		Difficulty:        diff,
+		Mined:             mined,
+		BlockCount:        blockCount,
+		LatestBlockReward: blockReward,
+		GeneratedAt:       time.Now().UTC(),
 	}
 	return network.Insert(conn)
 }
@@ -109,4 +117,23 @@ func getMined() (string, error) {
 // getBlockCount gets the current block count
 func getBlockCount() (string, error) {
 	return networkQuery("/getblockcount")
+}
+
+// getBlockReward gets the block reward from the last block
+func getBlockReward() (float64, error) {
+	resp, err := http.Get(bitBarInfoUrl)
+	if err != nil {
+		return 0.0, err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+
+	var value struct {
+		LastBlock float64 `json:"last_block"`
+	}
+	if err := json.Unmarshal(body, &value); err != nil {
+		return 0.0, err
+	}
+
+	return value.LastBlock, nil
 }

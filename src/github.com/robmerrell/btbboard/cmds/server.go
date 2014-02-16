@@ -172,8 +172,8 @@ func generateTplVars(price *models.Price, network *models.Network) map[string]st
 	minedNum, _ := strconv.Atoi(network.Mined)
 	marketCap := float64(minedNum) * price.Cryptsy.Usd
 
-	// coins left to be mined
-	remainingCoins := 500000 - minedNum
+	// coins to be mined over a year at the current reward
+	toMine := network.LatestBlockReward * 6 * 24 * 365.25
 
 	vars := map[string]string{
 		"usd":         lib.RenderFloat("", price.Cryptsy.Usd),
@@ -182,10 +182,10 @@ func generateTplVars(price *models.Price, network *models.Network) map[string]st
 		"change":      percentChange,
 		"changeStyle": changeStyle,
 
-		"hashRate":   lib.RenderFloatFromString("", network.HashRate),
-		"difficulty": lib.RenderFloatFromString("", network.Difficulty),
-		"mined":      lib.RenderIntegerFromString("", network.Mined),
-		"remaining":  lib.RenderInteger("", remainingCoins),
+		"hashRate":       lib.RenderFloatFromString("", network.HashRate),
+		"difficulty":     lib.RenderFloatFromString("", network.Difficulty),
+		"mined":          lib.RenderIntegerFromString("", network.Mined),
+		"toMineOverYear": lib.RenderFloat("", toMine),
 	}
 
 	return vars
